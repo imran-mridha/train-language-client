@@ -42,9 +42,9 @@ const Header = () => {
       </div>
       <div className="">
         <Link>
-        <button className='border border-cyan-300 py-2 px-4 rounded'>Login</button>
+          <button className='border border-cyan-300 py-2 px-4 rounded-lg text-white hover:bg-cyan-300 hover:text-cyan-900'>Login</button>
         </Link>
-        {/* <div className="dropdown dropdown-end">
+        <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               <img src="https://placeimg.com/80/80/people" />
@@ -60,7 +60,7 @@ const Header = () => {
             <li><a>Settings</a></li>
             <li><a>Logout</a></li>
           </ul>
-        </div> */}
+        </div>
       </div>
     </div>
   );
