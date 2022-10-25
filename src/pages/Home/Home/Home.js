@@ -14,6 +14,7 @@ import Slider from './Slider';
 import LearnLive from './LearnLive';
 import Learn from './Learn';
 import Testmonia from './Testmonial';
+import Info from './Info';
 
 const Home = () => {
   const courses = useLoaderData();
@@ -77,6 +78,9 @@ const Home = () => {
       </div>
       <div className='my-10'>
         <Testmonia />
+      </div>
+      <div className='mt-40 mb-20'>
+        <Info />
       </div>
     </div>
   );
