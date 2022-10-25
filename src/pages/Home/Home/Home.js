@@ -9,10 +9,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import Slider from './Slider';
 import LearnLive from './LearnLive';
-import Learn from './Learn/Learn';
+import Learn from './Learn';
+import Testmonia from './Testmonial';
 
 const Home = () => {
   const courses = useLoaderData();
@@ -74,7 +75,9 @@ const Home = () => {
           }
         </Swiper>
       </div>
-      <div>hdsgvdfgv</div>
+      <div className='my-10'>
+        <Testmonia />
+      </div>
     </div>
   );
 };
