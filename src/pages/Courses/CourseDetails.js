@@ -10,7 +10,7 @@ const CourseDetails = () => {
         <p className='text-3xl text-white border-l-4 border-r-4 border-cyan-500 px-3 shadow-2xl p-2'>Details About <span className='text-cyan-300 font-semibold'>{title}</span> Course </p>
       </div>
       <div className='relative grid grid-cols-1 lg:grid-cols-12 mx-5 lg:mx-32 my-20 gap-10'>
-        
+
         <div className='col-span-5 p-5 border rounded-lg shadow-xl '>
           <img className='rounded-lg' src={image_url} alt="" />
           <p className='text-2xl mt-3 font-semibold'>Course Name: {title}</p>
@@ -30,7 +30,7 @@ const CourseDetails = () => {
           <div className='flex justify-between items-center my-3'>
             <div className=''>
               <img className='w-20 h-20 rounded-full' src={instructor.img} alt="" />
-              <p className='text-xl font-semibold'>{instructor.name}</p>
+              <p className='text-xl font-semibold mt-3'>Instructor: {instructor.name}</p>
             </div>
             <div className="flex justify-center space-x-4">
               <a href='/' rel="noopener noreferrer" title="Facebook" className="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-cyan-500 hover:bg-cyan-600 text-white">
@@ -52,12 +52,17 @@ const CourseDetails = () => {
           </div>
         </div>
         <div className='col-span-7'>
-          <h2 className='text-3xl font-semibold bg-cyan-100 px-3 py-1 rounded-lg shadow-lg'>Details Overview</h2>
-          <p className='bg-cyan-100 mt-5 p-3'>
+          <h2 className='text-3xl font-semibold bg-cyan-100 px-3 py-1 shadow-lg border-b-4 border-cyan-300'>Details Overview</h2>
+          <p className='bg-cyan-100 mb-5 p-3 text-xl'>
             {details}
           </p>
-          <div>
-            <Link></Link>
+          <h2 className='text-3xl font-semibold bg-cyan-100 px-3 py-1  shadow-lg border-b-4 border-cyan-300'>Course Certificate</h2>
+          <p className='bg-cyan-100 p-3 text-xl'>
+          You will receive an Certificate and a detailed report of your progress in each skill area.
+          </p>
+          <div className='bg-cyan-100 p-3'>
+            <Link><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mr-5'>Get Premium Access</button></Link>
+            <Link><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg'>Download PDF</button></Link>
           </div>
         </div>
       </div>
