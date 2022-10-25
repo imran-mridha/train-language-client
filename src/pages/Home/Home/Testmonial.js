@@ -3,14 +3,14 @@ import timage01 from '../../../assets/images/testmonialImg-01.jpg';
 import timage02 from '../../../assets/images/testmonialImg-02.jpg';
 import quatImg from '../../../assets/images/quote-ico.png';
 import { HiStar } from "react-icons/hi";
-const Testmonia = () => {
+const Testmonial = () => {
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 gap-3'>
-      <div className='grid grid-cols-2 gap-3 mx-5 md:mx-0 lg:ml-20 items-center'>
-        <img className='w-72' src={timage01} alt="" />
-        <img className='w-60' src={timage02} alt="" />
+    <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-3'>
+      <div className='grid grid-cols-2 lg:gap-3 mx-5 md:mx-0 lg:ml-20 items-center'>
+        <img className='lg:w-72' src={timage01} alt="" />
+        <img className='lg:w-60' src={timage02} alt="" />
       </div>
-      <div className='bg-cyan-900 p-20'>
+      <div className='bg-cyan-900 p-5 lg:p-20'>
         <div className='flex justify-between'>
           <div className='flex text-3xl text-yellow-500'>
             <HiStar></HiStar>
@@ -34,4 +34,4 @@ const Testmonia = () => {
   );
 };
 
-export default Testmonia;
+export default Testmonial;

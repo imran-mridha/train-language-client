@@ -33,11 +33,6 @@ const Header = () => {
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/blog'>Blog</Link></li>
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/pdf'>Download PDF</Link></li>
           <input type="checkbox" className="toggle mt-3 mr-3" checked />
-          {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" />
-            </div>
-          </label> */}
         </ul>
       </div>
       <div className="">

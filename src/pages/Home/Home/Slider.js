@@ -3,7 +3,7 @@ import { HiStar } from "react-icons/hi";
 
 const Slider = ({ course }) => {
   console.log(course);
-  const { image_url, title, rating, total_student, details, price } = course;
+  const { image_url, title,  total_student, details } = course;
   return (
     <div className='border p-4 flex flex-col rounded-lg justify-between h-[500px]'>
       <img className='w-full h-72 rounded' src={image_url} alt="" />

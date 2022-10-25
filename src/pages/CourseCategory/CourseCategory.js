@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Category from './Category';
+import LeftSideCategory from './LeftSideCategory';
 
 const CourseCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -11,10 +11,10 @@ const CourseCategory = () => {
   },[])
   return (
     <div className='sticky top-0'>
-      <h2>Courser Categories</h2>
+      <h2 className='text-xl border-l-4 border-cyan-600 pl-2 text-cyan-500'>Course Categories</h2>
       <div >
         {
-          categories.map(category => <Category key = {category.id} category = {category} />)
+          categories.map(category => <LeftSideCategory key = {category.id} category = {category} />)
         }
       </div>
     </div>

@@ -4,7 +4,7 @@ import { FaLaptop,FaBookOpen,FaUsers,FaUserAlt } from "react-icons/fa";
 const Info = () => {
   return (
     <div className='mx-5 lg:mx-20'>
-      <div className='grid grid-cols-2 md:grid-cols-4 gap-20'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-20'>
         <div className='flex items-center'>
           <div className='border p-3 bg-cyan-100 rounded-full'>
             <FaLaptop className='text-2xl text-cyan-500'></FaLaptop>

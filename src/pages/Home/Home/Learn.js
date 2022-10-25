@@ -4,7 +4,7 @@ import { HiSpeakerphone,HiBookOpen,HiPencil } from "react-icons/hi";
 const Learn = () => {
   return (
     <div>
-      <h2 className='text-3xl capitalize w-72 font-semibold mb-10 border-l-4 pl-2 pb-2 shadow-xl border-cyan-500 border-b-4'>What do you learn?</h2>
+      <h2 className='text-2xl md:text-3xl capitalize w-64 md:w-72 font-semibold mb-10 border-l-4 pl-2 pb-2 shadow-xl border-cyan-500 border-b-4'>What do you learn?</h2>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
         <div className='text-center px-20 pb-5 rounded-xl border border-cyan-500 hover:bg-cyan-100 duration-500 shadow-xl'>
           <HiSpeakerphone className='w-10 mx-auto text-8xl text-cyan-500' />
