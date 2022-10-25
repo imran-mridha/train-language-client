@@ -12,6 +12,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import Slider from './Slider';
 import LearnLive from './LearnLive';
+import Learn from './Learn/Learn';
 
 const Home = () => {
   const courses = useLoaderData();
@@ -27,11 +28,14 @@ const Home = () => {
         <img src={HeroImage} alt="" />
       </div>
       <div className='mx-5 lg:my-10 lg:mx-20'>
+        <Learn />
+      </div>
+      <div className='mx-5 lg:my-10 lg:mx-20'>
         <LearnLive />
       </div>
       <div className='mx-5 md:mx-10 lg:mx-20 my-20'>
         <div className='flex justify-between'>
-          <h2 className='text-3xl font-semibold mb-10 border-l-4 pl-2 pb-2 shadow-xl border-cyan-500 border-b-4'>Popular Courese</h2>
+          <h2 className='text-3xl font-semibold mb-10 border-l-4 pl-2 pb-2 shadow-xl border-cyan-500 border-b-4 capitalize'>Popular Courese</h2>
           <Link to='/courses'><button className='py-3 px-4 text-cyan-500 border border-cyan-500 rounded uppercase font-semibold hover:bg-cyan-500 hover:text-white duration-500'>Explore More</button></Link>
         </div>
         <Swiper
