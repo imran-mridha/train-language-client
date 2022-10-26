@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { HiStar } from "react-icons/hi";
-
+import Pdf from "react-to-pdf";
+const ref = createRef();
+const options = {
+  orientation: 'landscape',
+  unit: 'in',
+  format: [8, 8]
+};
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
   console.log(courseDetails);
-  const { title, image_url, details, instructor, total_student, lessons,duration,lecture } = courseDetails;
+  const { title, image_url, details, instructor, total_student, lessons, duration, lecture } = courseDetails;
   return (
-    <div className=''>
+    <div ref={ref} className=''>
       <div className='bg-cyan-800 h-40 flex justify-center items-center'>
         <p className='text-3xl text-white border-l-4 border-r-4 border-cyan-500 px-3 shadow-2xl p-2'>Details About <span className='text-cyan-300 font-semibold'>{title}</span> Course </p>
       </div>
@@ -69,7 +75,10 @@ const CourseDetails = () => {
           </p>
           <div className='bg-cyan-100'>
             <Link to={`/checkout/${courseDetails._id}`}><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mr-5 w-full md:w-auto'>Get Premium Access</button></Link>
-            <Link><button className='bg-cyan-300 hover:bg-cyan-600 w-full md:w-auto hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mt-5'>Download PDF</button></Link>
+            <Pdf targetRef={ref} filename="code-example.pdf" options = {options} x={.5} y={.5} scale={0.5}>
+              {({ toPdf }) => <button onClick={toPdf}><Link><button className='bg-cyan-300 hover:bg-cyan-600 w-full md:w-auto hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mt-5'>Download PDF</button></Link></button>}
+            </Pdf>
+            
           </div>
         </div>
       </div>

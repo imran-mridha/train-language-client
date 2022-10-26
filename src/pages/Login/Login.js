@@ -1,12 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-  const [email, setEmail] = useState()
+  const {logIn,resetPassword,setLoading} = useContext(AuthContext);
 
-  const {logIn,resetPassword} = useContext(AuthContext);
+  const [email, setEmail] = useState()
+  const [error, setError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const handleLogIn = (event)=>{
     event.preventDefault();
@@ -18,16 +24,26 @@ const Login = () => {
     console.log(email,password,confirmPassword);
 
     if(password !== confirmPassword){
-      return alert('Password Does not match')
+      return setPasswordError('Password Does not match')
     }
     logIn(email,password)
     .then(result => {
       const user = result.user;
+      setError('')
       console.log(user);
-      toast.success('Login Successfull', {autoClose: 500})
+      if(user?.emailVerified){
+        navigate(from , { replace: true})
+        toast.success('Login Successfull', {autoClose: 500})
+      }else{
+        toast.success('Please Verify Your Email Before LogIn',{autoClose: 500})
+      }
+      
     })
     .catch(error => {
-      toast.error(error.message)
+      setError(error.message)
+    })
+    .finally(() => {
+      setLoading(false);
     })
   }
 
@@ -37,6 +53,10 @@ const Login = () => {
   }
 
   const hdleResetPassword = () => {
+    if(!email){
+      toast.info('Please Enter your email!!!', {autoClose: 500})
+      return;
+    }
     resetPassword(email)
     .then(()=>{
       toast.info('Password reset email has been sent, Check your email please!!')
@@ -45,6 +65,7 @@ const Login = () => {
       toast.error(error.message)
     })
   }
+
 
   return (
     <div className='bg-cyan-900 p-5 w-11/12 md:w-6/12 lg:w-4/12 mx-auto my-20 rounded-lg'>
@@ -59,6 +80,7 @@ const Login = () => {
           <div>
             <label htmlFor="password" className="text-white">Password</label>
             <input id="password" name="password" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Password" />
+            <p className='text-red-500'>{error}</p>
             <div className='flex justify-end'>
               <Link onClick={hdleResetPassword} className='text-sm text-white'>Forgot Password?</Link>
             </div>
@@ -66,6 +88,7 @@ const Login = () => {
           <div>
             <label htmlFor="confirmPassword" className="text-white">Confirm Password</label>
             <input id="confirmPassword" name="confirmPassword" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Confirm Password" />
+            <p className='text-red-500'>{passwordError}</p>
           </div>
         </div>
         <div>

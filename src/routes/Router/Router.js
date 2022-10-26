@@ -1,14 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Main from '../../layout/Main'
 import ErrorPage from '../../others/ErrorPage'
+import Blog from '../../pages/Blog/Blog'
 import Contact from '../../pages/Contact/Contact'
 import Checkout from '../../pages/Courses/Checkout'
 import CourseDetails from '../../pages/Courses/CourseDetails'
 import Courses from '../../pages/Courses/Courses'
+import Faq from '../../pages/Faq/Faq'
 import Home from '../../pages/Home/Home/Home'
 import Login from '../../pages/Login/Login'
 import Profile from '../../pages/Profile/Profile'
 import Register from '../../pages/Register/Register'
+import PrivateRoutes from '../PrivateRoutes/PrivateRoutes'
 
 export const router = createBrowserRouter([
   {
@@ -31,11 +34,6 @@ export const router = createBrowserRouter([
         loader: ()=> fetch('http://localhost:5000/courses'),
         element: <Courses />
       },
-      // {
-      //   path: '/category/:id',
-      //   element: <Category />,
-      //   loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`)
-      // },
       {
         path: '/course/:id',
         element:  <CourseDetails />,
@@ -48,20 +46,29 @@ export const router = createBrowserRouter([
       {
         path: '/checkout/:id',
         loader: ({params})=>fetch(`http://localhost:5000/checkout/${params.id}`),
-        element:  <Checkout />,
+        element:   <PrivateRoutes><Checkout /></PrivateRoutes>
       }
       ,
       {
         path: '/login',
-        element:  <Login />,
+        element:  <Login />
       },
       {
         path: '/register',
-        element:  <Register />,
+        element:  <Register />
       },
       {
         path: '/profile',
-        element:  <Profile />,
+        element: <PrivateRoutes><Profile /></PrivateRoutes>
+      },
+      {
+        path: '/faq',
+        element: <Faq />
+      }
+      ,
+      {
+        path: '/blog',
+        element: <Blog />
       }
     ]
   }

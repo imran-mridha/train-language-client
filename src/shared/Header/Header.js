@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import logo from '../../assets/logo/logo.png';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
@@ -9,9 +10,9 @@ const Header = () => {
   const handleLogOut = () => {
     logOut()
     .then(()=>{
-      return alert('Logout successfull')
+      return toast.info('Logout successfull', {autoClose: 500})
     })
-    .catch(error => console.error(error))
+    .catch(error => toast.info(error.message))
   }
   return (
     <div className="navbar bg-cyan-900 lg:px-10">
@@ -48,7 +49,7 @@ const Header = () => {
       <div className="navbar navbar-end">
         {
           user?.uid && user.emailVerified ?
-            <div className="flex">
+            <div className="flex gap-2">
               <div>
                 <button onClick={handleLogOut} className='border border-cyan-300 py-2 px-4 rounded-lg text-white hover:bg-cyan-300 hover:text-cyan-900'>Log Out</button>
               </div>

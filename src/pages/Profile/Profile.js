@@ -1,23 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Profile = () => {
-  const { user,updateUserProfile } = useContext(AuthContext)
+  const { user,updateUserProfile,setLoading } = useContext(AuthContext)
   console.log(user);
-  const handleUpdateUserProfile =(fullName,photoURL)=>{
+  const [name, setName] = useState(user?.displayName);
+  const [photo, setPhoto] = useState(user?.photoURL);
+  const handleProfileUpdate = (e) =>{
+    e.preventDefault();
     const profile = {
-      displayName : fullName,
-      photoURL: photoURL
+      displayName: name,
+      photoURL : photo
     }
     updateUserProfile(profile)
     .then(()=>{
-      toast.success('Profile Update Successful', {autoClose: 500})
+      setLoading(false)
+      toast.success('Profile Update Success', {autoClose: 500})
     })
-    .then(error => {
-      toast.error(error.message);
-    })
+    .catch(e => toast.error(e.message, {autoClose:500}))
   }
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  }
+  const handlePhotoChange = (e) => {
+    setPhoto(e.target.value);
+  }
+
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 my-20'>
       <div className='w-11/12 lg:w-6/12 mx-auto bg-cyan-100 rounded-lg border p-5'>
@@ -43,7 +53,7 @@ const Profile = () => {
       </div>
       <div className='bg-cyan-900 rounded-lg border p-5 mx-10 mt-10 md:mt-0 lg:mr-20'>
         <h4 className='mt-3 text-2xl text-white'>Update Profile</h4>
-        <form onClick={handleUpdateUserProfile} className="space-y-6">
+        <form onSubmit={handleProfileUpdate} className="space-y-6">
           <input type="hidden" name="remember" value="true" />
           <div className="-space-y-px rounded-md shadow-sm">
           <div>
@@ -52,11 +62,11 @@ const Profile = () => {
             </div>
             <div>
               <label htmlFor="userName" className="text-white">User Name</label>
-              <input id="userName" defaultValue={user?.displayName} name="userName" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="User Name" />
+              <input id="userName" onChange={handleNameChange}  defaultValue={user?.displayName} name="userName" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="User Name" />
             </div>
             <div>
               <label htmlFor="photoURL" className="text-white">Photo URL</label>
-              <input id="photoURL" defaultValue={user?.photoURL} name="photoURL" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Photo URL" />
+              <input id="photoURL" onChange={handlePhotoChange}  defaultValue={user?.photoURL} name="photoURL" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Photo URL" />
             </div>
           </div>
           <div>

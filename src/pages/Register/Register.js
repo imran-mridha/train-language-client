@@ -1,18 +1,25 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React,{useContext} from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
-
-  const {providerLogin,createUser,verifyEmail,updateUserProfile} = useContext(AuthContext);
+  const [accepted, setAccepted] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+  const [success, setSuccess] = useState(false)
+  const { providerLogin, createUser, verifyEmail, updateUserProfile } = useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider()
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
   const handleRegister = (event) => {
     event.preventDefault();
+    setSuccess(false)
     const form = event.target;
     const fullName = form.fullName.value;
     const photoURL = form.photoURL.value;
@@ -20,63 +27,90 @@ const Register = () => {
     const password = form.password.value;
     console.log(fullName, photoURL, email, password);
 
-    createUser(email,password)
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-      toast.success('Account Create Successfull', {autoClose: 500})
-      hadleEmailVerify();
-      handleUpdateUserProfile(fullName,photoURL)
-    })
-    .catch(error => {
-      toast.error(error.message);
-    })
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setPasswordError('Password should have one uppercase character.');
+      return;
+    }
+    if (!/(?=.*[a-z])/.test(password)) {
+      setPasswordError('Password should have one lowwercase character.');
+      return;
+    }
+    if (!/(?=.*[!@#$&*])/.test(password)) {
+      setPasswordError('Password should have one special case character.');
+      return;
+    }
+    if (!/(?=.*[0-9])/.test(password)) {
+      setPasswordError('Password should have one digits letter.');
+      return;
+    }
+    if (!/.{6}/.test(password)) {
+      setPasswordError('Password length should be six');
+      return;
+    }
+    setPasswordError('');
+    createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        setSuccess(true);
+        navigate(from , { replace: true})
+        toast.success('Account Create Successfull', { autoClose: 500 })
+        hadleEmailVerify();
+        handleUpdateUserProfile(fullName, photoURL)
+      })
+      .catch(error => {
+        toast.error(error.message);
+      })
   }
 
   const hadleEmailVerify = () => {
     verifyEmail()
-    .then(()=> {
-      toast.info('Verify email has been sent, please verify!!', {autoClose: 500})
-    })
-    .catch(e => console.error(e))
+      .then(() => {
+        toast.info('Verify email has been sent, please verify!!', { autoClose: 500 })
+      })
+      .catch(e => console.error(e))
   }
 
   const handleGoogleRegister = () => {
     providerLogin(googleProvider)
-    .then(result => {
-      const user = result.user;
-      toast.success('Login Successfull', {autoClose: 500})
-      console.log(user);
-    })
-    .catch(error => {
-      toast.error(error.message);
-    })
+      .then(result => {
+        const user = result.user;
+        toast.success('Login Successfull', { autoClose: 500 })
+        console.log(user);
+      })
+      .catch(error => {
+        toast.error(error.message);
+      })
   }
 
-  const handleGithubRegister = () =>{
+  const handleGithubRegister = () => {
     providerLogin(githubProvider)
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-      toast.success('Login Successfull', {autoClose: 500})
-    })
-    .catch(error => {
-      toast.error(error.message);
-    })
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        toast.success('Login Successfull', { autoClose: 500 })
+      })
+      .catch(error => {
+        toast.error(error.message);
+      })
   }
 
-  const handleUpdateUserProfile =(fullName,photoURL)=>{
+  const handleUpdateUserProfile = (fullName, photoURL) => {
     const profile = {
-      displayName : fullName,
+      displayName: fullName,
       photoURL: photoURL
     }
     updateUserProfile(profile)
-    .then(()=>{
-      toast.success('Profile Update Successful', {autoClose: 500})
-    })
-    .then(error => {
-      toast.error(error.message);
-    })
+      .then(() => {
+        toast.success('Profile Update Successful', { autoClose: 500 })
+      })
+      .then(error => {
+        toast.error(error.message);
+      })
+  }
+
+  const handleAccepted = event => {
+    setAccepted(event.target.checked)
   }
 
   return (
@@ -98,16 +132,21 @@ const Register = () => {
             <input id="email" name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
           </div>
           <div>
+
             <label htmlFor="password" className="text-white">Password</label>
             <input id="password" name="password" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Password" />
+            <p className='text-red-500'>{passwordError}</p>
+            {
+              success && <p className='text-blue-300'>Successfully created account <span className='text-cyan-500 underline'> <Link to='/login'>Login Now</Link> </span> </p>
+            }
           </div>
           <div class="flex items-center py-2">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-cyan-300 text-cyan-600 focus:ring-cyan-500" />
+            <input onClick={handleAccepted} id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-cyan-300 text-cyan-600 focus:ring-cyan-500" />
             <label for="remember-me" class="ml-4 block text-sm text-white">Accept <Link className='text-cyan-400'>Trem & Conditions</Link> </label>
           </div>
         </div>
         <div>
-          <button type="submit" className="group relative flex w-full justify-center rounded-md border border-transparent bg-cyan-600 py-2 px-4 text-xl font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+          <button type="submit" className="group relative flex w-full justify-center rounded-md border border-transparent bg-cyan-600 py-2 px-4 text-xl font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" disabled={!accepted}>
             Register
           </button>
         </div>

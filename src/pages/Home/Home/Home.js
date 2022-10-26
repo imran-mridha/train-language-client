@@ -11,6 +11,7 @@ import LearnLive from './LearnLive';
 import Learn from './Learn';
 import Testmonial from './Testmonial';
 import Info from './Info';
+import Feedback from '../../Feedback/Feedback';
 
 const Home = () => {
   const courses = useLoaderData();
@@ -76,6 +77,9 @@ const Home = () => {
       </div>
       <div className='mt-10 lg:mt-40 mb-20'>
         <Info />
+      </div>
+      <div>
+        <Feedback />
       </div>
     </div>
   );
