@@ -12,7 +12,7 @@ const CourseDetails = () => {
         <p className='text-3xl text-white border-l-4 border-r-4 border-cyan-500 px-3 shadow-2xl p-2'>Details About <span className='text-cyan-300 font-semibold'>{title}</span> Course </p>
       </div>
       <div className='grid grid-cols-1 lg:grid-cols-12 mx-5 lg:mx-32 my-20 gap-y-10 lg:gap-10'>
-        <div className='col-span-5 p-5 border rounded-lg shadow-xl lg:h-[470px] '>
+        <div className='col-span-5 p-5 border rounded-lg shadow-xl lg:h-[480px] '>
           <img className='rounded-lg' src={image_url} alt="" />
           <p className='text-2xl mt-3 font-semibold'>Course Name: {title}</p>
           <div className='flex justify-between items-center my-3'>
@@ -52,7 +52,7 @@ const CourseDetails = () => {
             </div>
           </div>
         </div>
-        <div className='col-span-7 bg-cyan-100 px-3'>
+        <div className='col-span-7 bg-cyan-100 p-3 rounded-lg'>
           <h2 className='text-3xl font-semibold py-1 shadow-lg border-b-4 border-cyan-300'>Details Overview</h2>
           <p className='bg-cyan-100 p-3 text-xl'>
             {details}
@@ -61,15 +61,15 @@ const CourseDetails = () => {
             <li>Total Student {total_student}</li>
             <li>Total Lessons {lessons}</li>
             <li>Total Lecture {lecture}</li>
-            <li>Course Duration {duration}</li>
+            <li className='capitalize'>Course Duration {duration}</li>
           </ul>
           <h2 className='text-3xl font-semibold bg-cyan-100 px-3 py-1  shadow-lg border-b-4 border-cyan-300'>Course Certificate</h2>
           <p className='bg-cyan-100 p-3 text-xl'>
             You will receive an Certificate and a detailed report of your progress in each skill area.
           </p>
-          <div className='bg-cyan-100 p-3'>
+          <div className='bg-cyan-100'>
             <Link to={`/checkout/${courseDetails._id}`}><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mr-5 w-full md:w-auto'>Get Premium Access</button></Link>
-            <Link><button className='bg-cyan-300 hover:bg-cyan-600 w-full md:w-auto hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mt-5 md:mt-0'>Download PDF</button></Link>
+            <Link><button className='bg-cyan-300 hover:bg-cyan-600 w-full md:w-auto hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mt-5'>Download PDF</button></Link>
           </div>
         </div>
       </div>
