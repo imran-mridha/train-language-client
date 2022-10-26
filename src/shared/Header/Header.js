@@ -15,7 +15,7 @@ const Header = () => {
             <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/courses'>Courses</Link></li>
             <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/faq'>Faq</Link></li>
             <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/blog'>Blog</Link></li>
-            <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/blog'>Download PDF</Link></li>
+            <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/contact'>Contact</Link></li>
             <input type="checkbox" className="toggle ml-4 mt-3" checked />
           </ul>
         </div>
@@ -31,14 +31,14 @@ const Header = () => {
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/courses'>Courses</Link></li>
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/faq'>Faq</Link></li>
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/blog'>Blog</Link></li>
-          <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/pdf'>Download PDF</Link></li>
+          <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/contact'>Contact</Link></li>
           <input type="checkbox" className="toggle mt-3 mr-3" checked />
         </ul>
       </div>
       <div className="">
-        <Link>
+        {/* <Link>
           <button className='border border-cyan-300 py-2 px-4 rounded-lg text-white hover:bg-cyan-300 hover:text-cyan-900'>Login</button>
-        </Link>
+        </Link> */}
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">

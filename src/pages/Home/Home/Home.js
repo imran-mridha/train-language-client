@@ -2,13 +2,9 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import HeroImage from '../../../assets/images/hero.png';
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import required modules
 import { Autoplay, Navigation } from "swiper";
 import Slider from './Slider';
 import LearnLive from './LearnLive';
@@ -18,7 +14,6 @@ import Info from './Info';
 
 const Home = () => {
   const courses = useLoaderData();
-  // console.log(courses);
   return (
     <div>
       <div className='bg-cyan-900 grid grid-cols-1 md:grid-cols-2 py-10 lg:py-20 px-5 sm:grid-flow-col-dense lg:px-20'>
@@ -69,8 +64,8 @@ const Home = () => {
         >
           {
             courses.map(course =>
-              <SwiperSlide>
-                <Slider key={course._id} course={course} />
+              <SwiperSlide key={course._id}>
+                <Slider course={course} />
               </SwiperSlide>
             )
           }

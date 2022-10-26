@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { HiStar } from "react-icons/hi";
 const CourseDetails = () => {
   const courseDetails = useLoaderData();
+console.log(courseDetails);
   const { title, image_url, details, instructor, total_student, lessons } = courseDetails;
   return (
     <div className=''>
@@ -53,7 +54,7 @@ const CourseDetails = () => {
         </div>
         <div className='col-span-7'>
           <h2 className='text-3xl font-semibold bg-cyan-100 px-3 py-1 shadow-lg border-b-4 border-cyan-300'>Details Overview</h2>
-          <p className='bg-cyan-100 mb-5 p-3 text-xl'>
+          <p className='bg-cyan-100 p-3 text-xl'>
             {details}
           </p>
           <h2 className='text-3xl font-semibold bg-cyan-100 px-3 py-1  shadow-lg border-b-4 border-cyan-300'>Course Certificate</h2>
@@ -61,8 +62,8 @@ const CourseDetails = () => {
           You will receive an Certificate and a detailed report of your progress in each skill area.
           </p>
           <div className='bg-cyan-100 p-3'>
-            <Link><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mr-5'>Get Premium Access</button></Link>
-            <Link><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg'>Download PDF</button></Link>
+            <Link to={`/checkout/${courseDetails._id}`}><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mr-5'>Get Premium Access</button></Link>
+            <Link><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mt-5 md:mt-0'>Download PDF</button></Link>
           </div>
         </div>
       </div>

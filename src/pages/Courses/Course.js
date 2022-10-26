@@ -20,7 +20,7 @@ const Course = ({ course }) => {
         <p className='text-cyan-500'>Student: {total_student}</p>
       </div>
       {
-        details.length > 100 ? <p>{details.slice(0, 100) + '...'}</p> : <p>{details}</p>
+        details.length > 100 ? <>{details.slice(0, 100) + '...'}</> : <>{details}</>
       }
       <Link to={`/course/${_id}`}><button className='bg-cyan-300 hover:bg-cyan-500 duration-500 hover:text-white text-xl font-semibold py-2 w-full mt-5 rounded-lg'>See Details</button></Link>
     </div>
