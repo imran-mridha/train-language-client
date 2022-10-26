@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+  const [email, setEmail] = useState()
 
-  const {logIn} = useContext(AuthContext);
+  const {logIn,resetPassword} = useContext(AuthContext);
 
   const handleLogIn = (event)=>{
     event.preventDefault();
@@ -22,11 +24,28 @@ const Login = () => {
     .then(result => {
       const user = result.user;
       console.log(user);
+      toast.success('Login Successfull', {autoClose: 500})
     })
-    .catch(error => console.error(error))
-    
-
+    .catch(error => {
+      toast.error(error.message)
+    })
   }
+
+  const handleEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email)
+  }
+
+  const hdleResetPassword = () => {
+    resetPassword(email)
+    .then(()=>{
+      toast.info('Password reset email has been sent, Check your email please!!')
+    })
+    .then(error => {
+      toast.error(error.message)
+    })
+  }
+
   return (
     <div className='bg-cyan-900 p-5 w-11/12 md:w-6/12 lg:w-4/12 mx-auto my-20 rounded-lg'>
       <h4 className='mt-3 text-2xl text-white'>Login</h4>
@@ -35,13 +54,13 @@ const Login = () => {
         <div className="-space-y-px rounded-md shadow-sm">
           <div>
             <label htmlFor="email" className="text-white">Email</label>
-            <input id="email" name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
+            <input onChange={handleEmail} id="email" name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
           </div>
           <div>
             <label htmlFor="password" className="text-white">Password</label>
             <input id="password" name="password" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Password" />
             <div className='flex justify-end'>
-              <Link className='text-sm text-white'>Forgot Password?</Link>
+              <Link onClick={hdleResetPassword} className='text-sm text-white'>Forgot Password?</Link>
             </div>
           </div>
           <div>

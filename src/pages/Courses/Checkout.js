@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Checkout = () => {
   const course = useLoaderData();
@@ -7,8 +8,7 @@ const Checkout = () => {
 
   const handleCheckout = (event) => {
     event.preventDefault();
-    const form = event.target;
-    console.log(form);
+    toast.success('Payment Success!!', {autoClose:500})
   }
   return (
     <div>
@@ -63,7 +63,7 @@ const Checkout = () => {
             </div>
             <div>
               <button type="submit" className="group relative flex w-full justify-center rounded-md border border-transparent bg-cyan-600 py-2 px-4 text-sm font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                Proceed To Checkout
+                Proceed To Payment
               </button>
             </div>
           </form>
