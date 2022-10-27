@@ -6,7 +6,9 @@ import { HiStar } from "react-icons/hi";
 const Testmonial = () => {
   return (
     <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-3'>
-      <div className='grid grid-cols-2 lg:gap-3 mx-5 md:mx-0 lg:ml-20 items-center'>
+      <div data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500" className='grid grid-cols-2 lg:gap-3 mx-5 md:mx-0 lg:ml-20 items-center'>
         <img className='lg:w-72' src={timage01} alt="" />
         <img className='lg:w-60' src={timage02} alt="" />
       </div>

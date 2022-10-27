@@ -138,7 +138,7 @@ const Register = () => {
           </div>
           <div class="flex items-center py-2">
             <input onClick={handleAccepted} id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-cyan-300 text-cyan-600 focus:ring-cyan-500" />
-            <label for="remember-me" class="ml-4 block text-sm text-white">Accept <Link className='text-cyan-400'>Trem & Conditions</Link> </label>
+            <label for="remember-me" class="ml-4 block text-sm text-white">Accept Trem & Conditions </label>
           </div>
         </div>
         <div>

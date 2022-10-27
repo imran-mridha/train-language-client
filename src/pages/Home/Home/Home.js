@@ -22,7 +22,12 @@ const Home = () => {
           <p className='my-5 text-xl text-white'>Get access to compact lessons from the experts and connect with a community of native speakers to help you master words faster.</p>
           <Link to='/courses'><button className='py-3 px-4 text-white border border-cyan-500 rounded uppercase font-semibold hover:bg-cyan-500 duration-500'>Get Started</button></Link>
         </div>
-        <img src={HeroImage} alt="" />
+        <div data-aos="fade-left"
+          data-aos-anchor="#example-anchor"
+          data-aos-offset="500"
+          data-aos-duration="500">
+          <img src={HeroImage} alt="" />
+        </div>
       </div>
       <div className='mx-5 my-10 lg:my-20 lg:mx-20'>
         <Learn />

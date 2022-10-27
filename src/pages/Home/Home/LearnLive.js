@@ -8,7 +8,7 @@ const LearnLive = () => {
         <h2 className='text-3xl font-semibold'>Learn with real people</h2>
         <p className='text-gray-500 w-9/12 mt-5'>Practice with friendly, professional tutors in live 1-to-1 lessons or group classes to build confidence in your chosen language. Don’t just learn a language, speak it.</p>
       </div>
-      <div>
+      <div data-aos="fade-left">
         <img src={learnLive} alt="" />
       </div>
       
