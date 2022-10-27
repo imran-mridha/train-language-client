@@ -11,7 +11,7 @@ const Learn = () => {
           <p className='text-3xl font-semibold'>Speak</p>
           <p className='my-5'>Speak with native speakers on any topic you want (not just about the weather). Make friends in different parts of the Earth!</p>
         </div>
-        <div data-aos="zoom-out-up" className=' text-center px-20 pb-5 bg-cyan-100 shadow-xl rounded-xl border border-cyan-500'>
+        <div className=' text-center px-20 pb-5 bg-cyan-100 shadow-xl rounded-xl border border-cyan-500'>
           <HiBookOpen className='w-10 mx-auto text-8xl text-cyan-500' />
           <p className='text-3xl font-semibold'>Read</p>
           <p className='my-5'>Read literature in the original language. Grow your vocabulary, master the language’s grammar, and broaden your horizons!</p>
