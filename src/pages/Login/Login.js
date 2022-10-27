@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-  const { logIn, resetPassword, providerLogin,setLoading } = useContext(AuthContext);
+  const { logIn, resetPassword, providerLogin, setLoading } = useContext(AuthContext);
 
   const [email, setEmail] = useState()
   const [error, setError] = useState('');
@@ -34,10 +34,10 @@ const Login = () => {
         const user = result.user;
         setError('')
         console.log(user);
-        if(user.emailVerified){
-          navigate(from , { replace: true})
+        if (user.emailVerified) {
+          navigate(from, { replace: true })
           toast.success('Login Successfull', { autoClose: 500 })
-        }else{
+        } else {
           toast.error('Please Verify Your Email Before LogIn')
         }
       })
@@ -99,11 +99,11 @@ const Login = () => {
         <input type="hidden" name="remember" value="true" />
         <div className="-space-y-px rounded-md shadow-sm">
           <div>
-            <label htmlFor="email" className="text-white">Email</label>
+            <label htmlhtmlFor="email" className="text-white">Email</label>
             <input onChange={handleEmail} id="email" name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
           </div>
           <div>
-            <label htmlFor="password" className="text-white">Password</label>
+            <label htmlhtmlFor="password" className="text-white">Password</label>
             <input id="password" name="password" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Password" />
             <p className='text-red-500'>{error}</p>
             <div className='flex justify-end'>
@@ -111,7 +111,7 @@ const Login = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="confirmPassword" className="text-white">Confirm Password</label>
+            <label htmlhtmlFor="confirmPassword" className="text-white">Confirm Password</label>
             <input id="confirmPassword" name="confirmPassword" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Confirm Password" />
             <p className='text-red-500'>{passwordError}</p>
           </div>

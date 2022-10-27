@@ -36,15 +36,15 @@ const Header = () => {
             <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/faq'>Faq</NavLink></li>
             <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/blog'>Blog</NavLink></li>
             <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/contact'>Contact</NavLink></li>
-            <label for="AcceptConditions" class="relative h-6 w-14 cursor-pointer ml-3">
-              <input onClick={handledDarkLight} type="checkbox" id="AcceptConditions" class="peer sr-only" />
+            <label htmlFor="AcceptConditions" className="relative h-6 w-14 cursor-pointer ml-3">
+              <input onClick={handledDarkLight} type="checkbox" id="AcceptConditions" className="peer sr-only" />
 
               <span
-                class="absolute inset-0 rounded-full bg-white transition peer-checked:bg-cyan-200"
+                className="absolute inset-0 rounded-full bg-white transition peer-checked:bg-cyan-200"
               ></span>
 
               <span
-                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
+                className="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
               ></span>
             </label>
             <span className='text-white ml-3 font-semibold'>{dark ? 'Dark' : 'Light'}</span>
@@ -63,15 +63,15 @@ const Header = () => {
           <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/faq'>Faq</NavLink></li>
           <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/blog'>Blog</NavLink></li>
           <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/contact'>Contact</NavLink></li>
-          <label for="AcceptCondition" class="relative h-6 w-14 cursor-pointer">
-            <input onClick={handledDarkLight} type="checkbox" id="AcceptCondition" class="peer sr-only" />
+          <label htmlFor="AcceptCondition" className="relative h-6 w-14 cursor-pointer">
+            <input onClick={handledDarkLight} type="checkbox" id="AcceptCondition" className="peer sr-only" />
 
             <span
-              class="absolute inset-0 rounded-full bg-white transition peer-checked:bg-cyan-200"
+              className="absolute inset-0 rounded-full bg-white transition peer-checked:bg-cyan-200"
             ></span>
 
             <span
-              class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
+              className="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
             ></span>
           </label>
           <span className='text-white ml-3 font-semibold'>{dark ? 'Dark' : 'Light'}</span>

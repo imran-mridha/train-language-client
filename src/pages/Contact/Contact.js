@@ -14,15 +14,15 @@ const Contact = () => {
         </div>
         <form noValidate="" className=" bg-cyan-900 p-5 ng-untouched ng-pristine ng-valid rounded-lg">
           <div>
-            <label htmlFor="name" className="text-xm">Full name</label>
+            <label htmlhtmlFor="name" className="text-xm">Full name</label>
             <input id="name" type="text" placeholder="" className="w-full my-2 p-3 rounded bg-cyan-50 border border-cyan-500 outline-none text-gray-900" />
           </div>
           <div>
-            <label htmlFor="email" className="text-xm">Email</label>
+            <label htmlhtmlFor="email" className="text-xm">Email</label>
             <input id="email" type="email" required className="w-full my-2 p-3 rounded bg-cyan-50 border border-cyan-500 outline-none text-gray-900" />
           </div>
           <div>
-            <label htmlFor="message" className="text-xm">Message</label>
+            <label htmlhtmlFor="message" className="text-xm">Message</label>
             <textarea id="message" rows="3" className="w-full my-2 p-3 rounded bg-cyan-50 border border-cyan-500 outline-none text-gray-900"></textarea>
           </div>
           <button type="submit" className="w-full p-3 text-xl font-semibold tracking-wide uppercase rounded bg-cyan-500 hover:bg-cyan-600 text-white">Send Message</button>

@@ -119,26 +119,26 @@ const Register = () => {
         <input type="hidden" name="remember" value="true" />
         <div className="-space-y-px rounded-md shadow-sm">
           <div>
-            <label htmlFor="fullName" className="text-white">Full Name</label>
+            <label htmlhtmlFor="fullName" className="text-white">Full Name</label>
             <input id="fullName" name="fullName" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Full Name" />
           </div>
           <div>
-            <label htmlFor="photoURL" className="text-white">Photo URL</label>
+            <label htmlhtmlFor="photoURL" className="text-white">Photo URL</label>
             <input id="photoURL" name="photoURL" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Photo URL" />
           </div>
           <div>
-            <label htmlFor="email" className="text-white">Email</label>
+            <label htmlhtmlFor="email" className="text-white">Email</label>
             <input id="email" name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
           </div>
           <div>
 
-            <label htmlFor="password" className="text-white">Password</label>
+            <label htmlhtmlFor="password" className="text-white">Password</label>
             <input id="password" name="password" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Password" />
             <p className='text-red-500'>{passwordError}</p>
           </div>
-          <div class="flex items-center py-2">
-            <input onClick={handleAccepted} id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-cyan-300 text-cyan-600 focus:ring-cyan-500" />
-            <label for="remember-me" class="ml-4 block text-sm text-white">Accept Trem & Conditions </label>
+          <div className="flex items-center py-2">
+            <input onClick={handleAccepted} id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 rounded border-cyan-300 text-cyan-600 focus:ring-cyan-500" />
+            <label htmlFor="remember-me" className="ml-4 block text-sm text-white">Accept Trem & Conditions </label>
           </div>
         </div>
         <div>

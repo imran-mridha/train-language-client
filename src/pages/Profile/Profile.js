@@ -58,15 +58,15 @@ const Profile = () => {
           <input type="hidden" name="remember" value="true" />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
-              <label htmlFor="email" className="text-white">Email</label>
+              <label htmlhtmlFor="email" className="text-white">Email</label>
               <input id="email" readOnly defaultValue={user?.email} name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
             </div>
             <div>
-              <label htmlFor="userName" className="text-white">User Name</label>
+              <label htmlhtmlFor="userName" className="text-white">User Name</label>
               <input id="userName" onChange={handleNameChange} defaultValue={user?.displayName} name="userName" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="User Name" />
             </div>
             <div>
-              <label htmlFor="photoURL" className="text-white">Photo URL</label>
+              <label htmlhtmlFor="photoURL" className="text-white">Photo URL</label>
               <input id="photoURL" onChange={handlePhotoChange} defaultValue={user?.photoURL} name="photoURL" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Photo URL" />
             </div>
           </div>

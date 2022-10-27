@@ -34,15 +34,15 @@ const Checkout = () => {
             <input type="hidden" name="remember" value="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
-                <label htmlFor="name" className="text-white">Full Name</label>
+                <label htmlhtmlFor="name" className="text-white">Full Name</label>
                 <input id="name" defaultValue={user?.displayName} name="name" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Full Name" />
               </div>
               <div>
-                <label htmlFor="email" className="text-white">Email</label>
+                <label htmlhtmlFor="email" className="text-white">Email</label>
                 <input id="email" defaultValue={user?.email} name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
               </div>
               <div>
-                <label htmlFor="address" className="text-white">Adress</label>
+                <label htmlhtmlFor="address" className="text-white">Adress</label>
                 <input id="street" name="street" type="text" className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Street" />
                 <input id="city" name="city" type="text" className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="City" />
                 <div className='md:flex gap-5'>
@@ -52,16 +52,16 @@ const Checkout = () => {
               </div>
               <div>
                 <h4 className='mt-3 text-xl text-white'>Payment Information</h4>
-                <label htmlFor="card" className="text-white">Card Number</label>
+                <label htmlhtmlFor="card" className="text-white">Card Number</label>
                 <input id="card" name="card" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Card Number MM/YY CVC" />
               </div>
               <div className='md:flex gap-5'>
                 <div>
-                  <label htmlFor="exp-month" className="text-white">Exp Month</label>
+                  <label htmlhtmlFor="exp-month" className="text-white">Exp Month</label>
                   <input id="exp-month" name="exp-month" type="text" className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Exp Month" />
                 </div>
                 <div>
-                  <label htmlFor="exp-year" className="text-white">Exp Year</label>
+                  <label htmlhtmlFor="exp-year" className="text-white">Exp Year</label>
                   <input id="exp-year" name="exp-year" type="text" className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Exp Year" />
                 </div>
               </div>
