@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../../assets/logo/logo.png';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut,setLoading } = useContext(AuthContext);
   const [dark, setDark] = useState();
+
+  const navigate = useNavigate()
 
   const handledDarkLight = (e) => {
     setDark(e.target.checked)
@@ -15,6 +17,8 @@ const Header = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
+        setLoading(false)
+        navigate('/')
         return toast.info('Logout successfull', { autoClose: 500 })
       })
       .catch(error => toast.info(error.message, { autoClose: 500 }))
