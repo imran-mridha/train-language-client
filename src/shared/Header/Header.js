@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../../assets/logo/logo.png';
@@ -6,9 +6,9 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [dark,setDark] = useState();
+  const [dark, setDark] = useState();
 
-  const handledDarkLight = (e) =>{
+  const handledDarkLight = (e) => {
     setDark(e.target.checked)
   }
 
@@ -17,7 +17,7 @@ const Header = () => {
       .then(() => {
         return toast.info('Logout successfull', { autoClose: 500 })
       })
-      .catch(error => toast.info(error.message, {autoClose: 500}))
+      .catch(error => toast.info(error.message, { autoClose: 500 }))
   }
   return (
     <div className="navbar bg-cyan-900 lg:px-10">
@@ -43,7 +43,7 @@ const Header = () => {
                 class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
               ></span>
             </label>
-            <span className='text-white ml-3 font-semibold'>{dark? 'Dark': 'Light'}</span>
+            <span className='text-white ml-3 font-semibold'>{dark ? 'Dark' : 'Light'}</span>
           </ul>
         </div>
         <Link to='/'>
@@ -70,19 +70,26 @@ const Header = () => {
               class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
             ></span>
           </label>
-          <span className='text-white ml-3 font-semibold'>{dark? 'Dark': 'Light'}</span>
+          <span className='text-white ml-3 font-semibold'>{dark ? 'Dark' : 'Light'}</span>
         </ul>
       </div>
       <div className="navbar navbar-end">
         {
           user?.uid && user.emailVerified ?
-            <div className="flex gap-2">
-              <div>
-                <button onClick={handleLogOut} className='border border-cyan-300 py-2 px-4 rounded-lg text-white hover:bg-cyan-300 hover:text-cyan-900'>Log Out</button>
-              </div>
-              <div>
-                <Link to='/profile'><img title={user?.displayName} className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" /></Link>
-              </div>
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img title={user?.displayName} src={user?.photoURL} alt=''/>
+                </div>
+              </label>
+              <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-cyan-300 rounded-lg w-52">
+                <li className='mb-2 bg-cyan-100 rounded-lg'>
+                  <Link to='/profile' className="justify-between text-lg">
+                    Profile
+                  </Link>
+                </li>
+                <li className='bg-cyan-100 rounded-lg' onClick={handleLogOut}><p className='text-lg'>Log Out</p></li>
+              </ul>
             </div>
             :
             <div>
@@ -91,7 +98,6 @@ const Header = () => {
               </Link>
             </div>
         }
-
 
       </div>
     </div>

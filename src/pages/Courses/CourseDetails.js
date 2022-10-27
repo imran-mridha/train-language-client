@@ -14,11 +14,20 @@ const CourseDetails = () => {
   const { title, image_url, details, instructor, total_student, lessons, duration, lecture } = courseDetails;
   return (
     <div ref={ref} className=''>
-      <div className='bg-cyan-800 h-40 flex justify-center items-center'>
-        <p className='text-3xl text-white border-l-4 border-r-4 border-cyan-500 px-3 shadow-2xl p-2'>Details About <span className='text-cyan-300 font-semibold'>{title}</span> Course </p>
+      <div className='bg-cyan-800 h-72 md:h-48 flex flex-wrap justify-center items-center'>
+        <div className='mx-10 md:mx-0'>
+          <p className='text-center lg:text-start text-3xl text-white border-l-4 border-r-4 border-cyan-500 px-3 shadow-2xl p-2'>Details About <span className='text-cyan-300 font-semibold'>{title}</span> Course </p>
+        </div>
+        <div>
+          <div className=''>
+            <Pdf targetRef={ref} filename="code-example.pdf" options={options} x={.5} y={.5} scale={0.5}>
+              {({ toPdf }) => <button onClick={toPdf}><Link><button className='border border-cyan-600 hover:bg-cyan-700 w-full md:w-auto text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg md:ml-5'>Download PDF</button></Link></button>}
+            </Pdf>
+          </div>
+        </div>
       </div>
       <div className='grid grid-cols-1 lg:grid-cols-12 mx-5 lg:mx-32 my-20 gap-y-10 lg:gap-10'>
-        <div className='col-span-5 p-5 border rounded-lg shadow-xl lg:h-[480px] '>
+        <div className='col-span-5 p-5 border rounded-lg shadow-xl'>
           <img className='rounded-lg' src={image_url} alt="" />
           <p className='text-2xl mt-3 font-semibold'>Course Name: {title}</p>
           <div className='flex justify-between items-center my-3'>
@@ -75,10 +84,9 @@ const CourseDetails = () => {
           </p>
           <div className='bg-cyan-100'>
             <Link to={`/checkout/${courseDetails._id}`}><button className='bg-cyan-300 hover:bg-cyan-600 hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mr-5 w-full md:w-auto'>Get Premium Access</button></Link>
-            <Pdf targetRef={ref} filename="code-example.pdf" options = {options} x={.5} y={.5} scale={0.5}>
+            {/* <Pdf targetRef={ref} filename="code-example.pdf" options={options} x={.5} y={.5} scale={0.5}>
               {({ toPdf }) => <button onClick={toPdf}><Link><button className='bg-cyan-300 hover:bg-cyan-600 w-full md:w-auto hover:text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg mt-5'>Download PDF</button></Link></button>}
-            </Pdf>
-            
+            </Pdf> */}
           </div>
         </div>
       </div>
