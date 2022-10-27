@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../../assets/logo/logo.png';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -27,12 +27,12 @@ const Header = () => {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
           <ul tabIndex={0} className="menu menu-compact dropdown-content mt-7 p-2 shadow bg-cyan-800 rounded-box w-52">
-            <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/home'>Home</Link></li>
-            <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/courses'>Courses</Link></li>
-            <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/faq'>Faq</Link></li>
-            <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/blog'>Blog</Link></li>
-            <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/contact'>Contact</Link></li>
-            <label for="AcceptConditions" class="relative h-6 w-14 cursor-pointer">
+            <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/home'>Home</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/courses'>Courses</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/faq'>Faq</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/blog'>Blog</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mb-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mb-2`} to='/contact'>Contact</NavLink></li>
+            <label for="AcceptConditions" class="relative h-6 w-14 cursor-pointer ml-3">
               <input onClick={handledDarkLight} type="checkbox" id="AcceptConditions" class="peer sr-only" />
 
               <span
@@ -54,11 +54,11 @@ const Header = () => {
       </div>
       <div className="hidden lg:flex">
         <ul className="menu navbar navbar-center menu-horizontal p-0">
-          <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3' to='/home'>Home</Link></li>
-          <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-2' to='/courses'>Courses</Link></li>
-          <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-2' to='/faq'>Faq</Link></li>
-          <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-2' to='/blog'>Blog</Link></li>
-          <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-2' to='/contact'>Contact</Link></li>
+          <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/home'>Home</NavLink></li>
+          <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/courses'>Courses</NavLink></li>
+          <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/faq'>Faq</NavLink></li>
+          <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/blog'>Blog</NavLink></li>
+          <li><NavLink className={({ isActive }) => isActive ? `bg-cyan-300 font-semibold uppercase mr-3` : `text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-3`} to='/contact'>Contact</NavLink></li>
           <label for="AcceptCondition" class="relative h-6 w-14 cursor-pointer">
             <input onClick={handledDarkLight} type="checkbox" id="AcceptCondition" class="peer sr-only" />
 
@@ -79,7 +79,7 @@ const Header = () => {
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img title={user?.displayName} src={user?.photoURL} alt=''/>
+                  <img title={user?.displayName} src={user?.photoURL} alt='' />
                 </div>
               </label>
               <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-cyan-300 rounded-lg w-52">
@@ -93,9 +93,9 @@ const Header = () => {
             </div>
             :
             <div>
-              <Link to='/login'>
-                <button className='border border-cyan-300 py-2 px-4 rounded-lg text-white hover:bg-cyan-300 hover:text-cyan-900'>Login</button>
-              </Link>
+              <NavLink to='/login' className={({ isActive }) => isActive ? `bg-cyan-300 py-2 px-4 rounded-lg text-cyan-900 font-semibold uppercase` : ` font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 border border-cyan-300 py-2 px-4 rounded-lg text-white`}>
+                <button className=''>Login</button>
+              </NavLink>
             </div>
         }
 

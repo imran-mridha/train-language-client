@@ -20,7 +20,7 @@ const CourseDetails = () => {
         </div>
         <div>
           <div className=''>
-            <Pdf targetRef={ref} filename="code-example.pdf" options={options} x={.5} y={.5} scale={0.5}>
+            <Pdf targetRef={ref} filename={`${title}.pdf`} options={options} x={.5} y={.5} scale={0.5}>
               {({ toPdf }) => <button onClick={toPdf}><Link><button className='border border-cyan-600 hover:bg-cyan-700 w-full md:w-auto text-white duration-500 py-3 px-6 text-xl font-semibold rounded-lg md:ml-5'>Download PDF</button></Link></button>}
             </Pdf>
           </div>
@@ -46,7 +46,7 @@ const CourseDetails = () => {
           <div className='flex justify-between items-center my-3'>
             <div className=''>
               <img className='w-20 h-20 rounded-full' src={instructor.img} alt="" />
-              <p className='text-xl font-semibold mt-3'>Instructor: {instructor.name}</p>
+              <p className='text-sm lg:text-xl font-semibold mt-3'>Instructor: {instructor.name}</p>
             </div>
             <div className="flex justify-center space-x-4">
               <a href='/' rel="noopener noreferrer" title="Facebook" className="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-cyan-500 hover:bg-cyan-600 text-white">

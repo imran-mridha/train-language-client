@@ -19,7 +19,7 @@ const Contact = () => {
           </div>
           <div>
             <label htmlFor="email" className="text-xm">Email</label>
-            <input id="email" type="email" className="w-full my-2 p-3 rounded bg-cyan-50 border border-cyan-500 outline-none text-gray-900" />
+            <input id="email" type="email" required className="w-full my-2 p-3 rounded bg-cyan-50 border border-cyan-500 outline-none text-gray-900" />
           </div>
           <div>
             <label htmlFor="message" className="text-xm">Message</label>

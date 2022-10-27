@@ -33,6 +33,7 @@ const Profile = () => {
       <div className='w-11/12 lg:w-6/12 mx-auto bg-cyan-100 rounded-lg border p-5'>
         <img className='w-48 h-48 mx-auto rounded-full border border-cyan-500 p-1 mb-3' src={user?.photoURL} alt="" />
         <p className='text-xl text-center'>User Name: <span className='text-cyan-800 font-semibold'>{user?.displayName}</span> </p>
+        <p className='text-sm text-center'>{user?.email}</p>
         <div className="flex justify-center space-x-4 mt-5">
           <a href='/' rel="noopener noreferrer" title="Facebook" className="flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-cyan-500 hover:bg-cyan-600 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-4 h-4">
