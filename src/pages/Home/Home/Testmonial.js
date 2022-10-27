@@ -21,7 +21,7 @@ const Testmonial = () => {
           </div>
           <img src={quatImg} alt="" />
         </div>
-        <p className='my-5 text-white text-xl italic'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio corporis numquam accusamus velit incidunt odio voluptatem dolores autem sapiente id.</p>
+        <p className='my-5 text-white text-xl italic'>I'm absolutely loving my Spanish lessons with Live Lingua! For someone who travels full time, I was worried about how I would manage to stay on top of my Spanish learning. But with the flexibility of classes, taking lessons has been super convenient.</p>
         <div className='flex items-center'>
           <img className='w-20 h-20 rounded-full mr-3' src={timage01} alt="" />
           <div className='text-gray-300'>

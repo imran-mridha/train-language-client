@@ -18,40 +18,24 @@ Hosted in Firebase -> [Train Language](https://dev-quiz-imran.netlify.app/)
 
 * Authenticatin (Email Password, Google, Github)
 * Language learning Courses
-* React Toastify
-* lottie-react
-* Tailwind
-* Mambaui
-* Kitwind
-* Hyperui
-* Hero Icon
-* Rechart
+* Checkout
+* Privet Route
+* User Profile Update
+* Corse PDF Download
 
 ### Built With
 
 * React
 * React Router Dom v6.4 
 * React Toastify
+* React To Pdf
 * lottie-react
 * Tailwind
 * Daisyui
 * Mambaui
 * Hyperui
 * React Icon
+* Swiperjs
 * Firebase
 
-### QUIZ API LINK:
-
-* Get all quiz topics:
-   ```sh
-   https://openapi.programming-hero.com/api/quiz
-   ```
-* Get topic details by topic id:
-   ```sh
-   https://openapi.programming-hero.com/api/quiz/${id}
-   ```
-* Example:
-   ```sh
-   https://openapi.programming-hero.com/api/quiz/1
-   ```
 
