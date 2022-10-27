@@ -36,6 +36,7 @@ Hosted in Firebase -> [Train Language](https://train-language.web.app/)
 * Hyperui
 * React Icon
 * Swiperjs
+* AUS Animation
 * Firebase
 
 

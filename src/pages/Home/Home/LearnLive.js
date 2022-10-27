@@ -11,7 +11,7 @@ const LearnLive = () => {
       <div data-aos="fade-left">
         <img src={learnLive} alt="" />
       </div>
-      
+
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaLaptop,FaBookOpen,FaUsers,FaUserAlt } from "react-icons/fa";
+import { FaLaptop, FaBookOpen, FaUsers, FaUserAlt } from "react-icons/fa";
 
 const Info = () => {
   return (

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { HiStar } from "react-icons/hi";
 
 const Course = ({ course }) => {
-  // console.log(course);
   const { _id, image_url, title, total_student, details } = course;
   return (
     <div className='shadow-xl rounded-lg p-4'>

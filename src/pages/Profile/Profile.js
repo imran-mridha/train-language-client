@@ -1,24 +1,24 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const Profile = () => {
-  const { user,updateUserProfile,setLoading } = useContext(AuthContext)
+  const { user, updateUserProfile, setLoading } = useContext(AuthContext)
   console.log(user);
   const [name, setName] = useState(user?.displayName);
   const [photo, setPhoto] = useState(user?.photoURL);
-  const handleProfileUpdate = (e) =>{
+  const handleProfileUpdate = (e) => {
     e.preventDefault();
     const profile = {
       displayName: name,
-      photoURL : photo
+      photoURL: photo
     }
     updateUserProfile(profile)
-    .then(()=>{
-      setLoading(false)
-      toast.success('Profile Update Success', {autoClose: 500})
-    })
-    .catch(e => toast.error(e.message, {autoClose:500}))
+      .then(() => {
+        setLoading(false)
+        toast.success('Profile Update Success', { autoClose: 500 })
+      })
+      .catch(e => toast.error(e.message, { autoClose: 500 }))
   }
 
   const handleNameChange = (e) => {
@@ -57,17 +57,17 @@ const Profile = () => {
         <form onSubmit={handleProfileUpdate} className="space-y-6">
           <input type="hidden" name="remember" value="true" />
           <div className="-space-y-px rounded-md shadow-sm">
-          <div>
+            <div>
               <label htmlFor="email" className="text-white">Email</label>
               <input id="email" readOnly defaultValue={user?.email} name="email" type="email" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Email" />
             </div>
             <div>
               <label htmlFor="userName" className="text-white">User Name</label>
-              <input id="userName" onChange={handleNameChange}  defaultValue={user?.displayName} name="userName" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="User Name" />
+              <input id="userName" onChange={handleNameChange} defaultValue={user?.displayName} name="userName" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="User Name" />
             </div>
             <div>
               <label htmlFor="photoURL" className="text-white">Photo URL</label>
-              <input id="photoURL" onChange={handlePhotoChange}  defaultValue={user?.photoURL} name="photoURL" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Photo URL" />
+              <input id="photoURL" onChange={handlePhotoChange} defaultValue={user?.photoURL} name="photoURL" type="text" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Photo URL" />
             </div>
           </div>
           <div>
