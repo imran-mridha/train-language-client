@@ -1,5 +1,5 @@
 import React,{useContext} from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
@@ -8,9 +8,12 @@ const Checkout = () => {
   const { title, image_url, price, instructor } = course;
   const { user } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const handleCheckout = (event) => {
     event.preventDefault();
-    toast.success('Payment Success!!', { autoClose: 500 })
+    toast.success('Payment Success!!', { autoClose: 500 });
+    navigate('/courses')
   }
   return (
     <div>

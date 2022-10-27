@@ -79,7 +79,7 @@ const Register = () => {
         console.log(user);
       })
       .catch(error => {
-        toast.error(error.message);
+        toast.error(error.message, {autoClose: 500});
       })
   }
 

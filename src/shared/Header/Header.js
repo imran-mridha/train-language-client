@@ -1,18 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from '../../assets/logo/logo.png';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-  const { user,logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const [dark,setDark] = useState();
+
+  const handledDarkLight = (e) =>{
+    setDark(e.target.checked)
+  }
 
   const handleLogOut = () => {
     logOut()
-    .then(()=>{
-      return toast.info('Logout successfull', {autoClose: 500})
-    })
-    .catch(error => toast.info(error.message))
+      .then(() => {
+        return toast.info('Logout successfull', { autoClose: 500 })
+      })
+      .catch(error => toast.info(error.message, {autoClose: 500}))
   }
   return (
     <div className="navbar bg-cyan-900 lg:px-10">
@@ -27,7 +32,18 @@ const Header = () => {
             <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/faq'>Faq</Link></li>
             <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/blog'>Blog</Link></li>
             <li><Link className='hover:bg-cyan-300 text-white hover:text-cyan-900 font-semibold' to='/contact'>Contact</Link></li>
-            <input type="checkbox" className="toggle ml-4 mt-3" checked />
+            <label for="AcceptConditions" class="relative h-6 w-14 cursor-pointer">
+              <input onClick={handledDarkLight} type="checkbox" id="AcceptConditions" class="peer sr-only" />
+
+              <span
+                class="absolute inset-0 rounded-full bg-white transition peer-checked:bg-cyan-200"
+              ></span>
+
+              <span
+                class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
+              ></span>
+            </label>
+            <span className='text-white ml-3 font-semibold'>{dark? 'Dark': 'Light'}</span>
           </ul>
         </div>
         <Link to='/'>
@@ -43,7 +59,18 @@ const Header = () => {
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-2' to='/faq'>Faq</Link></li>
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-2' to='/blog'>Blog</Link></li>
           <li><Link className='text-white font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 mr-2' to='/contact'>Contact</Link></li>
-          <input type="checkbox" className="toggle mr-3" checked />
+          <label for="AcceptCondition" class="relative h-6 w-14 cursor-pointer">
+            <input onClick={handledDarkLight} type="checkbox" id="AcceptCondition" class="peer sr-only" />
+
+            <span
+              class="absolute inset-0 rounded-full bg-white transition peer-checked:bg-cyan-200"
+            ></span>
+
+            <span
+              class="absolute inset-0 m-1 h-4 w-4 rounded-full bg-cyan-500 transition peer-checked:translate-x-6"
+            ></span>
+          </label>
+          <span className='text-white ml-3 font-semibold'>{dark? 'Dark': 'Light'}</span>
         </ul>
       </div>
       <div className="navbar navbar-end">
@@ -54,7 +81,7 @@ const Header = () => {
                 <button onClick={handleLogOut} className='border border-cyan-300 py-2 px-4 rounded-lg text-white hover:bg-cyan-300 hover:text-cyan-900'>Log Out</button>
               </div>
               <div>
-                <Link to ='/profile'><img title={user?.displayName} className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" /></Link>
+                <Link to='/profile'><img title={user?.displayName} className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" /></Link>
               </div>
             </div>
             :
