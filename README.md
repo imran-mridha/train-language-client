@@ -2,7 +2,7 @@
 
 ## Live Link
 
-Hosted in Firebase -> [Train Language](https://dev-quiz-imran.netlify.app/)
+Hosted in Firebase -> [Train Language](https://train-language.web.app/)
 
 ### Installation
 1. Clone the repo

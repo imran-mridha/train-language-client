@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-  const { logIn, resetPassword, setLoading, providerLogin } = useContext(AuthContext);
+  const { logIn, resetPassword, providerLogin } = useContext(AuthContext);
 
   const [email, setEmail] = useState()
   const [error, setError] = useState('');
@@ -34,19 +34,11 @@ const Login = () => {
         const user = result.user;
         setError('')
         console.log(user);
-        if (user?.emailVerified) {
-          navigate(from, { replace: true })
-          toast.success('Login Successfull', { autoClose: 500 })
-        } else {
-          toast.success('Please Verify Your Email Before LogIn', { autoClose: 500 })
-        }
-
+        navigate(from, { replace: true })
+        toast.success('Login Successfull', { autoClose: 500 })
       })
       .catch(error => {
         setError(error.message)
-      })
-      .finally(() => {
-        setLoading(false);
       })
   }
   const handleGoogleLogin = () => {

@@ -75,26 +75,26 @@ const Header = () => {
       </div>
       <div className="navbar navbar-end">
         {
-          user?.uid && user.emailVerified ?
+          user?.uid ?
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img title={user?.displayName} src={user?.photoURL} alt='' />
                 </div>
               </label>
-              <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-cyan-300 rounded-lg w-52">
+              <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-cyan-300 rounded-lg w-32">
                 <li className='mb-2 bg-cyan-100 rounded-lg'>
-                  <Link to='/profile' className="justify-between text-lg">
+                  <Link to='/profile' className="justify-between">
                     Profile
                   </Link>
                 </li>
-                <li className='bg-cyan-100 rounded-lg' onClick={handleLogOut}><p className='text-lg'>Log Out</p></li>
+                <li className='bg-cyan-100 rounded-lg' onClick={handleLogOut}><p>Log Out</p></li>
               </ul>
             </div>
             :
             <div>
-              <NavLink to='/login' className={({ isActive }) => isActive ? `bg-cyan-300 py-2 px-4 rounded-lg text-cyan-900 font-semibold uppercase` : ` font-semibold uppercase hover:bg-cyan-300 hover:text-cyan-900 border border-cyan-300 py-2 px-4 rounded-lg text-white`}>
-                <button className=''>Login</button>
+              <NavLink to='/login' className={({ isActive }) => isActive ? `bg-cyan-300 px-4 py-2 rounded-lg text-cyan-900 uppercase` : `uppercase hover:bg-cyan-300 hover:text-cyan-900 border border-cyan-300 px-4 rounded-lg py-2 text-white`}>
+                <button>Login</button>
               </NavLink>
             </div>
         }

@@ -7,8 +7,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Register = () => {
   const [accepted, setAccepted] = useState(false);
   const [passwordError, setPasswordError] = useState('');
-  const [success, setSuccess] = useState(false)
-  const { providerLogin, createUser, verifyEmail, updateUserProfile } = useContext(AuthContext);
+  const { providerLogin, createUser, verifyEmail, updateUserProfile,setLoading } = useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider()
@@ -19,7 +18,6 @@ const Register = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
-    setSuccess(false)
     const form = event.target;
     const fullName = form.fullName.value;
     const photoURL = form.photoURL.value;
@@ -52,8 +50,7 @@ const Register = () => {
       .then(result => {
         const user = result.user;
         console.log(user);
-        setSuccess(true);
-        navigate(from , { replace: true})
+        navigate('/login')
         toast.success('Account Create Successfull', { autoClose: 500 })
         hadleEmailVerify();
         handleUpdateUserProfile(fullName, photoURL)
@@ -102,9 +99,11 @@ const Register = () => {
     }
     updateUserProfile(profile)
       .then(() => {
+        setLoading(false)
         toast.success('Profile Update Successful', { autoClose: 500 })
+
       })
-      .then(error => {
+      .catch(error => {
         toast.error(error.message);
       })
   }
@@ -136,9 +135,6 @@ const Register = () => {
             <label htmlFor="password" className="text-white">Password</label>
             <input id="password" name="password" type="password" required className="w-full rounded border border-cyan-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm my-1" placeholder="Your Password" />
             <p className='text-red-500'>{passwordError}</p>
-            {
-              success && <p className='text-blue-300'>Successfully created account <span className='text-cyan-500 underline'> <Link to='/login'>Login Now</Link> </span> </p>
-            }
           </div>
           <div class="flex items-center py-2">
             <input onClick={handleAccepted} id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-cyan-300 text-cyan-600 focus:ring-cyan-500" />
